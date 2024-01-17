@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { AppError } from "../../errors/appError";
-import { IUserCreate, IUserRequest } from "../../interfaces/user";
+import { IUserRequest } from "../../interfaces/user";
 import { PrismaClient } from '@prisma/client';
 
 const createUserService = async ({
@@ -8,7 +8,7 @@ const createUserService = async ({
   email,
   password,
   cpf,
-}: IUserRequest): Promise<IUserCreate> => {
+}: IUserRequest): Promise<IUserRequest> => {
 
   const prisma = new PrismaClient();
   

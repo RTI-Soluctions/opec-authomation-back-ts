@@ -1,4 +1,4 @@
-import { IUser, IUserCreate, IUserRequest } from "../../interfaces/user";
+import { IUserRequest } from "../../interfaces/user";
 import { PrismaClient } from '@prisma/client';
 
 const listUsersService = async (): Promise<IUserRequest[]> => {

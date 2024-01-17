@@ -2,16 +2,17 @@
 import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import { IUserUpdate } from "../../interfaces/user";
-import updateUserService from "../../services/user/updateUser.services";
+import { updateUserService } from "../../services/users/updateUser.service";
 
-const updateUserController = async (req: Request, res: Response) => {
+export const updateUserController = async (req: Request, res: Response) => {
   const user: IUserUpdate = req.body;
 
   const { id } = req.params;
 
-  const updateUser = await updateUserService(user, id);
+  const idNum = parseInt(id);
+
+  await updateUserService(user, idNum);
 
   return res.json({ message: "User updated" });
 };
 
-export default updateUserController;

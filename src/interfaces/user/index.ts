@@ -3,18 +3,12 @@ export interface IUserRequest{
     email: string
     cpf: string
     password: string
-  }
-
-  export interface IUserCreate {
-    name: string
-    email: string
-    password: string
     createdAt: Date
     updatedAt: Date
   }
   
   export interface IUser {
-    id: string
+    id: number
     name: string
     email: string
     password: string
