@@ -4,8 +4,8 @@
 
 - [1. Overview](#1-overview)
 - [2. Entity Relationship Diagram](#2-entity-relationship-diagram)
-- [3. Endpoints](#3-endpoints)
-- [4. Authetication](#4-authentication)
+**Under construction** - [3. Endpoints](#3-endpoints) 
+**Under construction** - [4. Authetication](#4-authentication)
 
 <br>
 
