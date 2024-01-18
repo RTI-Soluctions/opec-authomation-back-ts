@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  cpf       String   @unique
-  password  String
-  is_adm    Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  PI        PI[]
+  id                 Int                   @id @default(autoincrement())
+  name               String
+  email              String                @unique
+  cpf                String                @unique
+  password           String
+  is_adm             Boolean               @default(false)
+  is_active          Boolean               @default(true)
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+  insertion_requests Insertions_Requests[]
 
   @@map("users")
 }
@@ -39,7 +40,7 @@ model Client {
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
 
-  PI PI[]
+  insertion_requests Insertions_Requests[]
 
   @@map("clients")
 }
@@ -61,27 +62,27 @@ model Agency {
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
 
-  PI PI[]
+  insertion_requests Insertions_Requests[]
 
   @@map("agencys")
 }
 
-model PI {
-  id               Int      @id @default(autoincrement())
-  PI               Int      @unique
-  emission_date    DateTime
-  pit_number       String
-  plano_number     String
-  spreadsheet      String
-  product          String
-  campain          String
-  padv             String
-  order_of_service String
-  gross_value      Float
-  agency_comission Float
-  net_value        Float
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+model Insertions_Requests {
+  id                Int      @id @default(autoincrement())
+  insertion_request Int      @unique
+  emission_date     DateTime
+  pit_number        String
+  plano_number      String
+  spreadsheet       String
+  product           String
+  campain           String
+  padv              String
+  order_of_service  String
+  gross_value       Float
+  agency_comission  Float
+  net_value         Float
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   agencyId  Int
   clientId  Int
@@ -90,5 +91,5 @@ model PI {
   client_id Client @relation(fields: [clientId], references: [id])
   user_id   User   @relation(fields: [userId], references: [id])
 
-  @@map("pis")
+  @@map("insertion_requests")
 }
