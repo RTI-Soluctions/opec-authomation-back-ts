@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  cpf       String   @unique
+  password  String
+  is_adm    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  PI        PI[]
+
+  @@map("users")
+}
+
+model Client {
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  corporate_reason       String
+  cnpj_cpf               String   @unique
+  state_registration     String?
+  municipal_registration String?
+  cep                    String
+  street                 String
+  city                   String
+  state                  String
+  phone                  String
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  PI PI[]
+
+  @@map("clients")
+}
+
+model Agency {
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  corporate_reason       String
+  cnpj_cpf               String   @unique
+  state_registration     String?
+  municipal_registration String?
+  cep                    String
+  street                 String
+  city                   String
+  state                  String
+  phone                  String
+  email                  String   @unique
+  site                   String
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  PI PI[]
+
+  @@map("agencys")
+}
+
+model PI {
+  id               Int      @id @default(autoincrement())
+  PI               Int      @unique
+  emission_date    DateTime
+  pit_number       String
+  plano_number     String
+  spreadsheet      String
+  product          String
+  campain          String
+  padv             String
+  order_of_service String
+  gross_value      Float
+  agency_comission Float
+  net_value        Float
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  agencyId  Int
+  clientId  Int
+  userId    Int
+  agency_id Agency @relation(fields: [agencyId], references: [id])
+  client_id Client @relation(fields: [clientId], references: [id])
+  user_id   User   @relation(fields: [userId], references: [id])
+
+  @@map("pis")
+}
