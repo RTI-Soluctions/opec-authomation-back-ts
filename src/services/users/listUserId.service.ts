@@ -10,7 +10,7 @@ export const listUserIdService = async (id: number): Promise<IUserRequest> => {
   const findUser = await prisma.user.findUnique({
     where: { id },
     include: {
-      PI: true
+      insertion_requests: true
     }
   });
 
