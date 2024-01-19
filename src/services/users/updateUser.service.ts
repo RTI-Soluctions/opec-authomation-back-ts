@@ -19,10 +19,8 @@ export const updateUserService = async ({
   });
   
   if (!findUser) {
-    throw new AppError("User is not exists", 404);
+    throw new AppError("User not found", 404);
   }
-
- ;
 
   const user = prisma.user.update({
     where: {

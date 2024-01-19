@@ -6,8 +6,8 @@ export const deleteUserController = async (req: Request, res: Response) => {
 
   const idNum = parseInt(id);
 
-  await deleteUserService(idNum);
+ await deleteUserService(idNum);
 
-  return res.status(204).json("");
+  return res.status(204);
 
 };
