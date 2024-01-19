@@ -1,16 +1,15 @@
 import "reflect-metadata";
-import express, {Request, Response} from "express";
+import express from "express";
 import "express-async-errors";
-// import loginRoutes from "./routes/loginUser.routes";
 import userRoutes from "./routes/user.routes";
-// import { handleErrorMiddleware } from "./middlewares/handleError.middleware";
+import { handleErrorMiddleware } from "./middlewares/handleError.middlewares";
 
 const app = express();
 app.use(express.json());
 
 app.use("/users", userRoutes);
 // app.use("/login", loginRoutes);
-// app.use(handleErrorMiddleware);
+app.use(handleErrorMiddleware);
 
 
 export default app;

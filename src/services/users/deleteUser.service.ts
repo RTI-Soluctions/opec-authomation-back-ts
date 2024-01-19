@@ -1,5 +1,6 @@
 import { AppError } from "../../errors/appError";
 import { PrismaClient } from '@prisma/client';
+import { IUser } from "../../interfaces/user";
 
 export const deleteUserService = async (id: number): Promise<void> => {
 
@@ -11,11 +12,22 @@ export const deleteUserService = async (id: number): Promise<void> => {
 
 
   if (!findUser) {
-    throw new AppError("User not found", 404);
+    throw new AppError("User not found!", 404);
   }
 
-  await prisma.user.delete({
-    where: { id }
+  console.log(findUser)
+
+  if (!findUser.is_active) {
+    throw new AppError("User is not active!", 404);
+  }
+
+  prisma.user.update({
+    where: {
+        id
+    },
+    data: {
+      is_active: false,
+    },
   });
-  
+
 };

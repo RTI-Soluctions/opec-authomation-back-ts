@@ -12,7 +12,8 @@ export interface IUserRequest{
     name: string
     email: string
     password: string
-    isAdm: boolean
+    is_adm: boolean
+    is_active: boolean
     createdAt: Date
     updatedAt: Date
   }
@@ -27,4 +28,5 @@ export interface IUserRequest{
     email?: string
     password?: string
     cpf?: string
+    is_active?: boolean
   }
