@@ -1,6 +1,5 @@
 import { AppError } from "../../errors/appError";
 import { PrismaClient } from '@prisma/client';
-import { IUser } from "../../interfaces/user";
 
 export const deleteUserService = async (id: number): Promise<void> => {
 
@@ -26,6 +25,7 @@ export const deleteUserService = async (id: number): Promise<void> => {
         id
     },
     data: {
+      is_adm: false,
       is_active: false,
     },
   });

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-export const ensureIsActiveUserMiddleware = async (
+export const ensureIsActiveMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
