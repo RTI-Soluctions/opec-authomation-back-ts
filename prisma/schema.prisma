@@ -30,8 +30,8 @@ model Client {
   name                   String
   corporate_reason       String
   cnpj_cpf               String   @unique
-  state_registration     String?
-  municipal_registration String?
+  state_registration     String
+  municipal_registration String
   cep                    String
   street                 String
   city                   String
@@ -50,8 +50,8 @@ model Agency {
   name                   String
   corporate_reason       String
   cnpj_cpf               String   @unique
-  state_registration     String?
-  municipal_registration String?
+  state_registration     String
+  municipal_registration String
   cep                    String
   street                 String
   city                   String
